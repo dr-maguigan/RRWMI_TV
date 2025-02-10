@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full-Screen Website Slideshow</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background: black;
+        }
+        .slideshow-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .slide {
+            display: none;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+        }
+        .slide iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="slideshow-container">
+        <div class="slide active">
+            <iframe src="https://dr-maguigan.github.io/Red-River-Watershed/"></iframe>
+        </div>
+        <div class="slide">
+            <iframe src="https://www.weatherlink.com/embeddablePage/show/0b9814b1a6ec43e5a105bf883b6d31dd/fullscreen"></iframe>
+        </div>
+    </div>
+
+    <script>
+        let slideIndex = 0;
+        const slides = document.querySelectorAll(".slide");
+
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove("active"));
+            slides[index].classList.add("active");
+        }
+
+        function nextSlide() {
+            slideIndex = (slideIndex + 1) % slides.length;
+            showSlide(slideIndex);
+        }
+
+        setInterval(nextSlide, 10000); // Change slide every 10 seconds
+    </script>
+
+</body>
+</html>
